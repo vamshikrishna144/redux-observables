@@ -16,7 +16,7 @@ function TodoList(props) {
     return <div></div>
   }
   return props.items.map(item => {
-    return (<div>
+    return (<div key={item.task}>
       <p>{item.task} - {item.done ? 'Done': 'Pending'}</p>
       </div>)
   })
