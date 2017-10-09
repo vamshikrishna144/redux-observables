@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {clearItems, loadItems} from '../actions/index'
+import Get from 'lodash/get';
 
 export function Items(props) {
   return (<div>
     <button onClick = {props.load}>Load</button>
     <button onClick = {props.clear}>Clear</button>
     <TodoList {...props}/>
-    <AddItem />
   </div>)
 }
 
 function TodoList(props) {
-  if(!props.items.length) {
+  if(Get(props, 'items.length', null) == null) {
     return <div></div>
   }
   return props.items.map(item => {
